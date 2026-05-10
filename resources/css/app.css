@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        color-scheme: light;
+    }
+
+    body {
+        @apply bg-slate-50 text-slate-900 antialiased;
+        font-family: 'Figtree', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    a {
+        @apply text-red-600 transition hover:text-red-700;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+        @apply font-sans;
+    }
+}
+
+@layer components {
+    .app-shell {
+        @apply min-h-screen bg-slate-50;
+    }
+
+    .app-navbar {
+        @apply bg-white shadow-sm border-b border-slate-200;
+    }
+
+    .app-brand {
+        @apply text-xl font-bold tracking-tight text-red-600 hover:text-red-700;
+    }
+
+    .app-nav-link {
+        @apply text-slate-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition;
+    }
+
+    .app-nav-link-active {
+        @apply text-red-600 bg-red-50;
+    }
+
+    .card {
+        @apply bg-white shadow-sm rounded-2xl border border-slate-200 overflow-hidden;
+    }
+
+    .card-inner {
+        @apply p-6;
+    }
+
+    .card-title {
+        @apply text-lg font-semibold text-slate-900;
+    }
+
+    .card-subtitle {
+        @apply mt-1 text-sm text-slate-500;
+    }
+
+    .card-panel {
+        @apply bg-slate-50 rounded-2xl p-5;
+    }
+
+    .form-field {
+        @apply w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm focus:border-red-500 focus:ring-1 focus:ring-red-500;
+    }
+
+    .btn {
+        @apply inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium transition;
+    }
+
+    .btn-primary {
+        @apply btn bg-red-600 text-white hover:bg-red-700 focus:ring-2 focus:ring-red-500;
+    }
+
+    .btn-secondary {
+        @apply btn border border-slate-300 text-slate-700 bg-white hover:bg-slate-50;
+    }
+
+    .btn-success {
+        @apply btn bg-emerald-600 text-white hover:bg-emerald-700;
+    }
+
+    .btn-info {
+        @apply btn bg-sky-600 text-white hover:bg-sky-700;
+    }
+
+    .btn-danger {
+        @apply btn bg-rose-600 text-white hover:bg-rose-700;
+    }
+
+    .badge {
+        @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide;
+    }
+
+    .badge-pending {
+        @apply bg-amber-100 text-amber-800;
+    }
+
+    .badge-approved {
+        @apply bg-sky-100 text-sky-800;
+    }
+
+    .badge-fulfilled {
+        @apply bg-emerald-100 text-emerald-800;
+    }
+
+    .badge-rejected {
+        @apply bg-rose-100 text-rose-800;
+    }
+
+    .table-panel {
+        @apply overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm;
+    }
+
+    .table-panel table {
+        @apply min-w-full divide-y divide-slate-200;
+    }
+
+    .table-panel th {
+        @apply bg-slate-50 px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500;
+    }
+
+    .table-panel td {
+        @apply px-4 py-4 text-sm text-slate-700;
+    }
+
+    .section-header {
+        @apply border-b border-slate-200 pb-4 mb-4 text-xl font-semibold text-slate-900;
+    }
+}
