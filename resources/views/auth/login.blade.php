@@ -1,8 +1,14 @@
 <x-guest-layout>
+    <div class="text-center mb-6">
+        <x-application-logo class="w-16 h-16 mx-auto text-gray-700 dark:text-gray-200" />
+        <h2 class="mt-4 text-2xl font-bold text-gray-900 dark:text-gray-100">Sign in to your account</h2>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Welcome back — please enter your details to continue.</p>
+    </div>
+
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('login') }}" class="space-y-4">
         @csrf
 
         <!-- Email Address -->
