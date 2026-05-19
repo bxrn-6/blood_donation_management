@@ -182,8 +182,11 @@ class BloodRequestController extends Controller
         $bloodRequest->status = 'Approved';
         $bloodRequest->save();
 
+        // Auto-match compatible donors
+        $this->autoMatchDonors($bloodRequest);
+
         return redirect()->route('blood-requests.show', $bloodRequest->id)
-            ->with('success', 'Blood request approved successfully.');
+            ->with('success', 'Blood request approved successfully. Compatible donors have been matched.');
     }
 
     /**
