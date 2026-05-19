@@ -13,7 +13,7 @@ use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome2');
+    return redirect('/welcome2');
 });
 
 Route::get('/dashboard', function () {
