@@ -12,6 +12,7 @@ use App\Http\Controllers\DonorDashboardController;
 use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
+Route::redirect('/', '/welcome2');
 Route::view('/welcome2', 'welcome2');
 
 Route::get('/dashboard', function () {
