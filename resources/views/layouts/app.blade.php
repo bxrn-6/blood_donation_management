@@ -25,7 +25,7 @@
                         <div class="flex flex-col md:flex-row justify-between h-16 items-center gap-4 md:gap-0">
                             <div class="flex items-center">
                                 <a href="{{ route('dashboard') }}" class="app-brand">
-                                    <i class="fas fa-tint mr-2"></i>Blood Bank System
+                                    <i class="fas fa-tint mr-2"></i>Blood 4 Life 
                                 </a>
                             </div>
                             

@@ -22,7 +22,7 @@
                     <section class="p-10 lg:p-14">
                         <div class="inline-flex items-center gap-3 rounded-full bg-red-50 px-4 py-2 text-red-700 shadow-sm shadow-red-100">
                             <i class="fas fa-tint text-xl"></i>
-                            <span class="text-sm font-semibold uppercase tracking-[0.28em]">Blood Bank</span>
+                            <span class="text-sm font-semibold uppercase tracking-[0.28em]">Blood 4 Life</span>
                         </div>
 
                         <div class="mt-10 max-w-xl">
