@@ -2,7 +2,11 @@
     <style>
         .login-container {
             background: linear-gradient(135deg, #720505 0%, #e30e0e 100%);
-            min-height: 100vh;
+            height: 100%;
+            width: 400px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -13,8 +17,8 @@
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             padding: 40px;
-            max-width: 420px;
-            width: 100%;
+            max-width: 400px;
+            width: 1000%;
             animation: fadeInUp 0.6s ease-out;
         }
         @keyframes fadeInUp {
