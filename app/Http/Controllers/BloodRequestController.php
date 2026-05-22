@@ -181,26 +181,6 @@ class BloodRequestController extends Controller
     {
         $bloodRequest = BloodRequest::findOrFail($id);
 
-if (!Auth::user()->isAdmin()) {
-    abort(403, 'Unauthorized action.');
-}
-
-$availableUnits = BloodInventory::getAvailableByBloodType($bloodRequest->blood_type_needed);
-if ($availableUnits < $bloodRequest->quantity_requested) {
-    return redirect()
-        ->route('blood-requests.show', $bloodRequest->id)
-        ->with('error', "Insufficient inventory: requested {$bloodRequest->quantity_requested} units of {$bloodRequest->blood_type_needed}, but only {$availableUnits} available.");
-}
-
-$bloodRequest->status = 'Approved';
-$bloodRequest->save();
-
-$this->autoMatchDonors($bloodRequest);
-
-return redirect()
-    ->route('blood-requests.show', $bloodRequest->id)
-    ->with('success', 'Blood request approved successfully. Compatible donors have been matched.');
-        
 // Ensure the user is an admin
 if (!Auth::user()->isAdmin()) {
     abort(403, 'Unauthorized action.');
@@ -213,29 +193,19 @@ if ($availableUnits < $bloodRequest->quantity_requested) {
         ->route('blood-requests.show', $bloodRequest->id)
         ->with('error', "Insufficient inventory: requested {$bloodRequest->quantity_requested} units of {$bloodRequest->blood_type_needed}, but only {$availableUnits} available.");
 }
-        // Ensure the user is an admin
-        if (!Auth::user()->isAdmin()) {
-            abort(403, 'Unauthorized action.');
-        }
 
-        // Check inventory availability for the requested blood type
-        $availableUnits = BloodInventory::getAvailableByBloodType($bloodRequest->blood_type_needed);
-        if ($availableUnits < $bloodRequest->quantity_requested) {
-            return redirect()
-                ->route('blood-requests.show', $bloodRequest->id)
-                ->with('error', "Insufficient inventory: requested {$bloodRequest->quantity_requested} units of {$bloodRequest->blood_type_needed}, but only {$availableUnits} available.");
-        }
+// Approve the request
+$bloodRequest->status = 'Approved';
+$bloodRequest->save();
 
-        // Approve the request
-        $bloodRequest->status = 'Approved';
-        $bloodRequest->save();
+// Auto-match compatible donors
+$this->autoMatchDonors($bloodRequest);
 
-        // Auto-match compatible donors
-        $this->autoMatchDonors($bloodRequest);
+return redirect()
+    ->route('blood-requests.show', $bloodRequest->id)
+    ->with('success', 'Blood request approved successfully. Compatible donors have been matched.');
 
-        return redirect()
-            ->route('blood-requests.show', $bloodRequest->id)
-            ->with('success', 'Blood request approved successfully. Compatible donors have been matched.');
+
     }
 
     /**
@@ -286,6 +256,7 @@ if ($availableUnits < $bloodRequest->quantity_requested) {
                 'blood_request_id' => $bloodRequest->id,
                 'donor_id' => $donor->id,
                 'status' => 'pending',
+                'matched_at' => now(),
             ]);
         }
     }
